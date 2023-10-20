@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-800">
+    <br>
+    <div class="text-center text-3xl font-bold text-white">
+        <h1>Mehedi's Official Bank Account</h1>
+    </div>
+    <br>
+    <div class="flex gap-10 justify-center ">
+        <div class="relative flex flex-col text-gray-700 bg-slate-300 shadow-md w-96 rounded-xl bg-clip-border">
+            <div class="p-6">
+              <h5 class="block mb-2 font-sans text-3xl antialiased font-bold leading-snug tracking-normal text-black ">
+                Deposit
+              </h5>
+              <p class="block font-semibold text-2xl text-black ">
+                $<span id="showDepo">000</span>
+              </p>
+            </div>
+          </div>
+          <div class="relative flex flex-col text-gray-700 bg-slate-300 shadow-md w-96 rounded-xl bg-clip-border">
+            <div class="p-6">
+              <h5 class="block mb-2 font-sans text-3xl antialiased font-bold leading-snug tracking-normal text-black">
+                Withdraw
+              </h5>
+              <p class="block font-semibold text-2xl  text-black">
+                $<span id="showWithdraw">000</span>
+              </p>
+            </div> 
+          </div>
+          <div class="relative flex flex-col text-gray-700 bg-slate-300 shadow-md w-96 rounded-xl bg-clip-border">
+            <div class="p-6 pl-[100px]">
+              <h5 class="block mb-2 font-sans text-3xl antialiased font-bold leading-snug tracking-normal text-black">
+                Total
+              </h5>
+              <p class="block font-semibold text-2xl text-black">
+                $<span id="total">10000</span>
+              </p>
+            </div>
+          </div>
+    </div>
+
+
+
+    <section>
+        <div class="flex  justify-center mt-[60px] gap-20">
+            <div class="relative flex flex-col 
+             bg-blue-400 shadow-md w-[500px] rounded ">
+                <div class="p-6">
+                  <input type="text" placeholder="" name="" id="depositInput" class="w-[280px] h-[38px] rounded ">
+                </div>
+                <div class="p-6 pt-0">
+                  <button id="depositId"
+                    class="select-none rounded-lg bg-blue-700 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button"
+                    data-ripple-light="true"
+                  >
+                    Deposit
+                  </button>
+                </div>
+              </div>
+
+              <div class="relative flex flex-col 
+             bg-blue-400 shadow-md w-[500px] rounded ">
+                <div class="p-6">
+                  <input type="text" placeholder="" name="" id="findWithdraw" class="w-[280px] h-[38px] rounded ">
+                </div>
+                <div class="p-6 pt-0">
+                  <button id="withdraw"
+                    class="select-none rounded-lg bg-blue-700 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-500/20 transition-all hover:shadow-lg hover:shadow-sky-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    type="button"
+                    data-ripple-light="true"
+                  >
+                    Withdraw
+                  </button>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <script>
+        function funValu(inputValu){
+            const findValueId=document.getElementById(inputValu)
+            const findValu = findValueId.value;
+            const numberValue = parseFloat(findValu)
+            return numberValue
+        }
+        function funText(textValue){
+            const findTextId=document.getElementById(textValue)
+            const findText = findTextId.innerText;
+            const numberText = parseFloat(findText)
+            return numberText
+        }
+        function set(element,num){
+            const finElement = document.getElementById(element)
+            finElement.innerText=num
+        }
+         document.getElementById('depositId').addEventListener('click',function(){
+            const inpo = funValu('depositInput')
+            const textpo = funText('showDepo')
+            const currentDepo= inpo+textpo;
+            set('showDepo',currentDepo)
+            const totalText =funText('total')
+             const currentTotal=inpo+totalText ;
+             set('total',currentTotal)
+    
+         })     
+         document.getElementById('withdraw').addEventListener('click',function(){
+            const withDrawPo = funValu('findWithdraw')
+            const withdrawText= funText('showWithdraw')
+            const currentWith=withDrawPo+withdrawText
+            set('showWithdraw',currentWith)
+            const finalText=funText('total')
+            const finalTotal=finalText-withDrawPo;
+            set('total',finalTotal)
+    
+         })
+    </script>
+
+</body>
+</html>
